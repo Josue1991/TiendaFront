@@ -1,0 +1,79 @@
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <label>Cedula: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="clienteActualizado.CEDULA" name="CEDULA" #CEDULA="ngModel" required>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Nombre: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="clienteActualizado.NOMBRE" name="NOMBRE" #NOMBRE="ngModel" required>                
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Apellidos: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="clienteActualizado.APELLIDO" name="APELLIDO" #APELLIDO="ngModel" required>                
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Email: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="clienteActualizado.EMAIL" name="EMAIL" #EMAIL="ngModel" required>                
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Domicilio: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="clienteActualizado.DIRECCION" name="DIRECCION" #DIRECCION="ngModel" required>                
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Telefono: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="clienteActualizado.TELEFONO" name="TELEFONO" #TELEFONO="ngModel" required>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <br>
+                <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-success" (click)="actualizar()">
+                    <i i-bs name="trash-fill"></i>Guardar</button>
+                <button type="button" class="btn btn-outline-danger" (click)="Cerrar()">
+                    <i i-bs name="trash-fill"></i> Cancelar</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+    </div>
+</form>
