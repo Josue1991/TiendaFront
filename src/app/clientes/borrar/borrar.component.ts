@@ -5,10 +5,10 @@ import { ClientesService } from '../service/clientes.service';
 import { NotificationService } from 'src/app/alerta/notification.service';
 
 @Component({
-  selector: 'app-editar',
-  templateUrl: './editar.component.html'
+  selector: 'app-borrar',
+  templateUrl: './borrar.component.html'
 })
-export class EditarComponent implements OnInit {
+export class BorrarComponent implements OnInit {
 
   clienteActualizado = new Clientes();
   filtroCliente: Clientes = new Clientes;
@@ -46,10 +46,11 @@ export class EditarComponent implements OnInit {
   }
 
 
-  actualizar() {
-    this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Cliente Actualizado")
+  eliminar() {
+    console.log("Input", this.clienteSeleccionado);
+    console.log("Actualizado", this.clienteActualizado);
     this.Cerrar();
-    
+    this.notificationService.showSuccess("Datos Eliminados Correctamente!!", "Cliente Eliminado")
   }
   Cerrar(){
     this.modalService.dismissAll('Save click');

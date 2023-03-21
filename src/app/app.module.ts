@@ -13,11 +13,13 @@ import { CrearProductosComponent } from './productos/crear-productos/crear-produ
 import { EditarProductosComponent } from './productos/editar-productos/editar-productos.component';
 import { ProductosFormComponent } from './productos/productos-form/productos-form.component';
 import { ProductosModule } from './productos/productos.module';
-import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 import { LoginComponent } from './login/login.component';
 import { LoginModule } from './login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { BorrarComponent } from './clientes/borrar/borrar.component';
+import { BorrarProductosComponent } from './productos/borrar-productos/borrarProductos.component';
+
 
 
 @NgModule({
@@ -26,9 +28,11 @@ import { ToastrModule } from 'ngx-toastr';
     ClientesFormComponent,
     CrearComponent,
     EditarComponent,
+    BorrarComponent,
     ProductosFormComponent,
     CrearProductosComponent,
     EditarProductosComponent,
+    BorrarProductosComponent,
     LoginComponent,
   ],
   imports: [
@@ -39,8 +43,8 @@ import { ToastrModule } from 'ngx-toastr';
     ClientesModule,
     ProductosModule,
     LoginModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    BrowserAnimationsModule,    
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

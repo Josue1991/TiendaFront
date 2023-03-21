@@ -1,15 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Clientes } from '../../models/clientes';
 import { NotificationService } from 'src/app/alerta/notification.service';
 import { ProductosService } from '../service/productos.service';
 import { Productos } from 'src/app/models/productos';
 
 @Component({
-  selector: 'app-editar-productos',
-  templateUrl: './editar-productos.component.html'
+  selector: 'app-borrar-productos',
+  templateUrl: './borrarProductos.component.html'
 })
-export class EditarProductosComponent implements OnInit {
+export class BorrarProductosComponent implements OnInit {
 
   productoActualizado = new Productos();
   filtroProducto: Productos = new Productos;
@@ -53,10 +52,11 @@ export class EditarProductosComponent implements OnInit {
   }
 
 
-  actualizar() {
-    this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Cliente Actualizado")
+  eliminar() {
+    console.log("Input", this.productoSeleccionado);
+    console.log("Actualizado", this.productoActualizado);
     this.Cerrar();
-    
+    this.notificationService.showSuccess("Datos Eliminados Correctamente!!", "Cliente Eliminado")
   }
   Cerrar(){
     this.modalService.dismissAll('Save click');

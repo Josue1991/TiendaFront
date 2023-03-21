@@ -1,7 +1,9 @@
+<div class="row" style="height: 5em;"></div>
+
 <form>
     <div class="container">
         <div class="row">
-            <button type="button" class="btn btn-outline-success" (click)="Registrarse(registrar)" data-toggle="modal"
+            <button type="button" class="btn btn-outline-primary" (click)="Registrarse(registrar)" data-toggle="modal"
                 data-target="#exampleModalCenter">
                 <i i-bs name="trash-fill"></i>Registrarse</button>
             <button type="button" class="btn btn-outline-success" (click)="Ingresar(ingresar)">
@@ -14,9 +16,6 @@
 <ng-template #registrar let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Registrar Usuario</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">×</span>
-        </button>
     </div>
     <div class="modal-body">
         <div class="container">
@@ -81,9 +80,6 @@
 <ng-template #ingresar let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Ingresar al Sistema</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">×</span>
-        </button>
     </div>
     <div class="modal-body">
         <div class="container">
