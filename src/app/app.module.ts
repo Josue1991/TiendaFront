@@ -14,6 +14,11 @@ import { EditarProductosComponent } from './productos/editar-productos/editar-pr
 import { ProductosFormComponent } from './productos/productos-form/productos-form.component';
 import { ProductosModule } from './productos/productos.module';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     ProductosFormComponent,
     CrearProductosComponent,
     EditarProductosComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,9 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
     HttpClientModule,
     ClientesModule,
     ProductosModule,
-    NgxBootstrapIconsModule.pick(allIcons)
+    LoginModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

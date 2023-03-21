@@ -1,0 +1,118 @@
+<form>
+    <div class="container">
+        <div class="row">
+            <button type="button" class="btn btn-outline-success" (click)="Registrarse(registrar)" data-toggle="modal"
+                data-target="#exampleModalCenter">
+                <i i-bs name="trash-fill"></i>Registrarse</button>
+            <button type="button" class="btn btn-outline-success" (click)="Ingresar(ingresar)">
+                <i i-bs name="trash-fill"></i>Log In</button>
+
+        </div>
+    </div>
+</form>
+
+<ng-template #registrar let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Registrar Usuario</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <label>CEDULA: </label>
+                </div>
+                <div class="col-6">
+                    <input [(ngModel)]="usuario.CEDULA" name="CEDULA" #CEDULA="ngModel" required>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label>NOMBRE: </label>
+                </div>
+                <div class="col-6">
+                    <input [(ngModel)]="usuario.NOMBRE" name="NOMBRE" #NOMBRE="ngModel" required>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label>EMAIL: </label>
+                </div>
+                <div class="col-6">
+                    <input [(ngModel)]="usuario.EMAIL" name="EMAIL" #EMAIL="ngModel" required>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label>CONTRASENA: </label>
+                </div>
+                <div class="col-6">
+                    <input [(ngModel)]="usuario.CONTRASENA" name="CONTRASENA" #CONTRASENA="ngModel" required>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label>RE-CONTRASENA: </label>
+                </div>
+                <div class="col-6">
+                    <input [(ngModel)]="usuario.RECONTRASENA" name="RECONTRASENA" #RECONTRASENA="ngModel" required>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" (click)="GuardarUsuario()">GUARDAR</button>
+        <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">CANCELAR</button>
+    </div>
+</ng-template>
+
+<ng-template #ingresar let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Ingresar al Sistema</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="col-3">
+                        <label>EMAIL: </label>
+                    </div>
+                    <div class="col-6">
+                        <input [(ngModel)]="usuario.EMAIL" name="EMAIL" #EMAIL="ngModel" required>
+                    </div>
+                    <div class="col-3">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <label>CONTRASENA: </label>
+                    </div>
+                    <div class="col-6">
+                        <input [(ngModel)]="usuario.CONTRASENA" name="CONTRASENA" #CONTRASENA="ngModel" required>
+                    </div>
+                    <div class="col-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="Login()">INGRESAR</button>
+        <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">CANCELAR</button>
+    </div>
+</ng-template>

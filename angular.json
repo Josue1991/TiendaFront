@@ -114,5 +114,8 @@
       }
     }
   },
-  "defaultProject": "TiendaFront"
+  "defaultProject": "TiendaFront",
+  "cli": {
+    "analytics": "ed0ed5d5-a4af-4134-b5e2-465e6adb104a"
+  }
 }
