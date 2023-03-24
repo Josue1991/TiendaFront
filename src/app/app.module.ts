@@ -19,8 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BorrarComponent } from './clientes/borrar/borrar.component';
 import { BorrarProductosComponent } from './productos/borrar-productos/borrarProductos.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { MenuComponent } from './menu/menu.component';
 
-
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { BorrarProductosComponent } from './productos/borrar-productos/borrarPro
     EditarProductosComponent,
     BorrarProductosComponent,
     LoginComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +48,15 @@ import { BorrarProductosComponent } from './productos/borrar-productos/borrarPro
     ClientesModule,
     ProductosModule,
     LoginModule,
-    BrowserAnimationsModule,    
-    ToastrModule.forRoot(),
+    BrowserAnimationsModule,  
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["https://localhost:44321/api/"],
+        disallowedRoutes: ["https://localhost:44321/api/"],
+      },
+    }),  
+    ToastrModule.forRoot()    
   ],
   providers: [],
   bootstrap: [AppComponent]
