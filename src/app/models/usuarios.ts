@@ -1,10 +1,13 @@
+import { Empleado } from "./empleado";
+
 export class Usuarios {
     constructor(
         public ID_USUARIO?: number,
-        public CEDULA?: string,
-        public NOMBRE?: string,
-        public EMAIL?: string,
+        public COD_EMPLEADO?: number,
+        public ID_ESTADO?: number,
         public CONTRASENA?: string,
         public RECONTRASENA?: string,
-        public ESTADO_USUARIO?: number) { }
+        public EMAIL?: string,
+        public EMPLEADO: Empleado = new Empleado
+    ) { }
 }

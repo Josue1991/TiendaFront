@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   closeResult: string = '';
   usuario: Usuarios = new Usuarios;
+  login: Usuarios = new Usuarios;
 
   constructor(private modalService: NgbModal, 
     public notificationService: NotificationService,
@@ -53,18 +54,27 @@ export class LoginComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
   /**
    * Guardar Usuario
    */
   GuardarUsuario() {
+    if(this.usuario.CONTRASENA == this.usuario.RECONTRASENA)
     this.notificationService.showSuccess("Datos Almacenados Correctamente!!", "Usuario Registrado")
+    else
+    this.notificationService.showError("Password No Coinciden !!", "Error Password")
+
   }
   /**
    * Ingresar al Sistema
    */
   Login() {
-    this.loginService.Login(this.usuario);
+    debugger;
+    this.loginService.Login(this.login).subscribe((data) => {
+      if (data) {
+        console.log(data)
+      }
+    });
+    this.loginService.Login(this.login);
    }
 
    isUserAuthenticated() {

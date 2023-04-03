@@ -22,6 +22,7 @@ import { BorrarProductosComponent } from './productos/borrar-productos/borrarPro
 import { JwtModule } from '@auth0/angular-jwt';
 import { MenuComponent } from './menu/menu.component';
 
+
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }

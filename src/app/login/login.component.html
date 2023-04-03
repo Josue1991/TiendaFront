@@ -20,53 +20,75 @@
     <div class="modal-body">
         <div class="container">
             <div class="row">
-                <div class="col-3">
-                    <label>CEDULA: </label>
+                <div class="col-4">
+                    <label for="txtDNI">DNI: </label>
                 </div>
                 <div class="col-6">
-                    <input [(ngModel)]="usuario.CEDULA" name="CEDULA" #CEDULA="ngModel" required>
+                    <input type="number" class="form-control" [min]="1" [max]="9999999999" id="txtDNI"
+                        [(ngModel)]="usuario.EMPLEADO.DNI_EMPLEADO" required />
+                    <p *ngIf="!usuario.EMPLEADO.DNI_EMPLEADO" style="color: red;">* Ingrese DNI</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label>NOMBRE: </label>
+                <div class="col-4">
+                    <label for="txtNombreEmpl">NOMBRE: </label>
                 </div>
                 <div class="col-6">
-                    <input [(ngModel)]="usuario.NOMBRE" name="NOMBRE" #NOMBRE="ngModel" required>
+                    <input type="text" class="form-control" id="txtNombreEmpl"
+                        [(ngModel)]="usuario.EMPLEADO.NOMBRE_EMPLEADO" required />
+                    <p *ngIf="!usuario.EMPLEADO.NOMBRE_EMPLEADO" style="color: red;">* Ingrese el Nombre</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label>EMAIL: </label>
+                <div class="col-4">
+                    <label for="txtApellidoEmpl">APELLIDO: </label>
                 </div>
                 <div class="col-6">
-                    <input [(ngModel)]="usuario.EMAIL" name="EMAIL" #EMAIL="ngModel" required>
+                    <input type="text" class="form-control" id="txtApellidoEmpl"
+                        [(ngModel)]="usuario.EMPLEADO.APELLIDO_EMPLEADO" required />
+                    <p *ngIf="!usuario.EMPLEADO.APELLIDO_EMPLEADO" style="color: red;">* Ingrese el Apellido</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label>CONTRASENA: </label>
+                <div class="col-4">
+                    <label for="txtEMAIL">EMAIL: </label>
                 </div>
                 <div class="col-6">
-                    <input [(ngModel)]="usuario.CONTRASENA" name="CONTRASENA" #CONTRASENA="ngModel" required>
+                    <input type="email" class="form-control" id="txtEMAIL" [(ngModel)]="usuario.EMAIL" required />
+                    <p *ngIf="!usuario.EMAIL" style="color: red;">* Ingrese el Email</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <label>RE-CONTRASENA: </label>
+                <div class="col-4">
+                    <label for="txtCONTRASENA">CONTRASENA: </label>
                 </div>
                 <div class="col-6">
-                    <input [(ngModel)]="usuario.RECONTRASENA" name="RECONTRASENA" #RECONTRASENA="ngModel" required>
+                    <input type="password" class="form-control" id="txtCONTRASENA" [(ngModel)]="usuario.CONTRASENA"
+                        required />
+                    <p *ngIf="!usuario.CONTRASENA" style="color: red;">* Ingrese el CONTRASENA</p>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="txtRECONTRASENA">RE-CONTRASENA: </label>
+                </div>
+                <div class="col-6">
+                    <input type="password" class="form-control" id="txtRECONTRASENA" [(ngModel)]="usuario.RECONTRASENA"
+                        required />
+                    <p *ngIf="!usuario.RECONTRASENA" style="color: red;">* Ingrese el RE-CONTRASENA</p>
+                    <p *ngIf="usuario.CONTRASENA != usuario.RECONTRASENA" style="color: red;">* Password no coinciden</p>
+                </div>
+                <div class="col-2">
                 </div>
             </div>
         </div>
@@ -83,32 +105,18 @@
     </div>
     <div class="modal-body">
         <div class="container">
-            <div class="row">
-                <div class="row">
-                    <div class="col-3">
-                        <label>EMAIL: </label>
-                    </div>
-                    <div class="col-6">
-                        <input [(ngModel)]="usuario.EMAIL" name="EMAIL" #EMAIL="ngModel" required>
-                    </div>
-                    <div class="col-3">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3">
-                        <label>CONTRASENA: </label>
-                    </div>
-                    <div class="col-6">
-                        <input [(ngModel)]="usuario.CONTRASENA" name="CONTRASENA" #CONTRASENA="ngModel" required>
-                    </div>
-                    <div class="col-3">
-                    </div>
-                </div>
+            <legend>Sign-In</legend>
+            <div class="mb-3">
+                <label class="form-label" for="txtUserName">User Name</label>
+                <input type="text" class="form-control" id="txtUserName" [(ngModel)]="login.EMAIL" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtPassword">Password</label>
+                <input type="password" class="form-control" id="txtPassword" [(ngModel)]="login.CONTRASENA" />
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-success" (click)="Login()">INGRESAR</button>
-        <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">CANCELAR</button>
+        <button class="btn btn-primary" (click)="Login()">Login</button>
     </div>
 </ng-template>

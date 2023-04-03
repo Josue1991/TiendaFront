@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { tokenGetter } from '../app.module';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,7 @@ export class MenuComponent {
   }
   isUserAuthenticated() {
     const token = localStorage.getItem("jwt");
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
+    if (token && !this.jwtHelper.isTokenExpired(tokenGetter())) {
       return true;
     }
     else {
