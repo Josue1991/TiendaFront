@@ -23,10 +23,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MenuComponent } from './menu/menu.component';
 
 
-export function tokenGetter() {
-  return localStorage.getItem("access_token");
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +48,9 @@ export function tokenGetter() {
     BrowserAnimationsModule,  
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter: () => {
+          return localStorage.getItem('tokens');
+        },
         allowedDomains: ["https://localhost:44321/api/"],
         disallowedRoutes: ["https://localhost:44321/api/"],
       },

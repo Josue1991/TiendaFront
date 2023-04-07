@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenModel } from '../models/token';
 import { UserProfile } from './userProfile';
+import { jsDocComment } from '@angular/compiler';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,25 @@ export class LoginService {
     userProfile = new BehaviorSubject<UserProfile | null>(null);
     jwtService: JwtHelperService = new JwtHelperService();
    
-    Login(payload: Usuarios) {
+    Login(payload: Usuarios):Observable<any> {
+      return this.httpClient
+        .post(this.url+'/Login', payload)
+        .pipe(
+          map((data) => {
+            var token = data as TokenModel;
+            var userInfo = this.jwtService.decodeToken(
+              token.access_token
+            ) as UserProfile;   
+            this.userProfile.next(userInfo);   
+            return data;
+          }),
+          catchError((error) => {
+            console.log(error);
+            return of(false);
+          })
+      );
+    }
+    RegistrarEmpleado(payload: Usuarios) {
       return this.httpClient
         .post(this.url+'/Login', payload)
         .pipe(
