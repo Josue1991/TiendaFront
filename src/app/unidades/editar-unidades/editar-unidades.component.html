@@ -1,0 +1,49 @@
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <label>Descripcion: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="unidadSeleccionado.DESCRIPCION_UNIDAD" name="DESCRIPCION_UNIDAD" #DESCRIPCION_UNIDAD="ngModel" required>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Abreviatura: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="unidadesActualizado.ABREVIATURA_UNIDAD" name="ABREVIATURA_UNIDAD" #ABREVIATURA_UNIDAD="ngModel" required>                
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Equivalencia </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="unidadSeleccionado.EQUIVALENCIA_UNIDAD" name="EQUIVALENCIA_UNIDAD" #EQUIVALENCIA_UNIDAD="ngModel" required>                
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <br>
+                <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-success" (click)="actualizar()">
+                    <i class="fa fa-cloud-upload"></i>Guardar</button>
+                <button type="button" class="btn btn-outline-danger" (click)="Cerrar()">
+                    <i class="fa fa-power-off"></i> Cancelar</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+    </div>
+</form>

@@ -6,8 +6,7 @@ import { NotificationService } from 'src/app/alerta/notification.service';
 
 @Component({
   selector: 'app-productos-form',
-  templateUrl: './productos-form.component.html',
-  styleUrls: ['./productos-form.component.scss']
+  templateUrl: './productos-form.component.html'
 })
 
 export class ProductosFormComponent implements OnInit {

@@ -21,6 +21,11 @@ import { BorrarComponent } from './clientes/borrar/borrar.component';
 import { BorrarProductosComponent } from './productos/borrar-productos/borrarProductos.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MenuComponent } from './menu/menu.component';
+import { UnidadesFormComponent } from './unidades/unidades-form/unidades-form.component';
+import { BorrarUnidadesComponent } from './unidades/borrar-unidades/borrarUnidades.component';
+import { EditarUnidadesComponent } from './unidades/editar-unidades/editar-unidades.component';
+import { CrearUnidadesComponent } from './unidades/crear-unidades/crear-unidades.component';
+import { UnidadesModule } from './unidades/unidades.module';
 
 
 @NgModule({
@@ -36,6 +41,10 @@ import { MenuComponent } from './menu/menu.component';
     BorrarProductosComponent,
     LoginComponent,
     MenuComponent,
+    UnidadesFormComponent,
+    CrearUnidadesComponent,
+    EditarUnidadesComponent,
+    BorrarUnidadesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +54,8 @@ import { MenuComponent } from './menu/menu.component';
     ClientesModule,
     ProductosModule,
     LoginModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule,
+    UnidadesModule,  
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

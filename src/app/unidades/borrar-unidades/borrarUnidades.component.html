@@ -1,0 +1,38 @@
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <h4>Eliminar Producto</h4>
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Va a eliminar el siguiente Producto: {{unidadActualizado.ID_UNIDAD}}
+                    {{unidadActualizado.DESCRIPCION_UNIDAD}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Desea continuar con la operación?</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <br>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-success" (click)="eliminar()">
+                        <i class="fa fa-trash-o"></i> SI</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="Cerrar()">
+                        <i class="fa fa-times-circle"></i>  NO</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+
+    </div>
+</form>
