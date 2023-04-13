@@ -15,8 +15,8 @@ export class UnidadesFormComponent {
   unidadSeleccionado?: Unidades = new Unidades;
   filtroUnidades: Unidades = new Unidades;
 
-  constructor(private unidadesService: UnidadesService, 
-    private modalService: NgbModal, 
+  constructor(private unidadesService: UnidadesService,
+    private modalService: NgbModal,
     public notificationService: NotificationService) {
   }
 
@@ -29,29 +29,24 @@ export class UnidadesFormComponent {
       if (res.length > 0) {
         this.notificationService.showInfo("Si se encontraron Resultados", "Consulta Finalizada");
         res.forEach(item => {
-          if (this.filtroUnidades.ID_UNIDAD != undefined && 
-            this.filtroUnidades.DESCRIPCION_UNIDAD == undefined && 
+          debugger
+          if (this.filtroUnidades.ID_UNIDAD != undefined &&
+            this.filtroUnidades.DESCRIPCION_UNIDAD == undefined &&
             item.ID_UNIDAD == this.filtroUnidades.ID_UNIDAD) {
             this.unidades.push(item);
           }
-          if (this.filtroUnidades.DESCRIPCION_UNIDAD != undefined && 
-            this.filtroUnidades.ID_UNIDAD == undefined && 
-            item.DESCRIPCION_UNIDAD == this.filtroUnidades.DESCRIPCION_UNIDAD) {
+          if (this.filtroUnidades.ID_UNIDAD == undefined &&
+            this.filtroUnidades.DESCRIPCION_UNIDAD != undefined &&
+            item.DESCRIPCION_UNIDAD?.localeCompare(this.filtroUnidades.DESCRIPCION_UNIDAD)) {
             this.unidades.push(item);
           }
-          if (this.filtroUnidades.ID_UNIDAD != undefined && 
-            this.filtroUnidades.DESCRIPCION_UNIDAD != undefined) {
-            if (item.ID_UNIDAD == this.filtroUnidades.ID_UNIDAD && 
-              item.DESCRIPCION_UNIDAD == this.filtroUnidades.DESCRIPCION_UNIDAD) {
-              this.unidades.push(item);
-            }
-          }
-          else {
+          if (this.filtroUnidades.ID_UNIDAD == undefined &&
+            this.filtroUnidades.DESCRIPCION_UNIDAD == undefined ) {
             this.unidades.push(item);
           }
         });
       }
-      else{
+      else {
         this.notificationService.showError("No se han encotrado datos!!", "Consulta Finalizada");
       }
     });
@@ -88,6 +83,10 @@ export class UnidadesFormComponent {
   }
   Cerrar() {
     this.modalService.dismissAll('Save click');
+  }
+  limpiarFiltros(){
+    this.unidades = [];
+    this.filtroUnidades = new Unidades;
   }
 
 }

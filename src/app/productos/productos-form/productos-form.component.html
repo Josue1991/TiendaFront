@@ -59,7 +59,11 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Descripcion</th>
-                            <th scope="col">Cantidad</th>
+                            <th scope="col">Cantidad Ingreso</th>
+                            <th scope="col">Fecha Ingreso</th>
+                            <th scope="col">Cantidad Salida</th>
+                            <th scope="col">Fecha Salida</th>
+                            <th scope="col">Stock</th>                       
                             <th scope="col">Precio</th>
                             <th scope="col"></th>
                         </tr>
@@ -68,8 +72,12 @@
                         <tr>
                             <td>{{item.ID_PRODUCTO}}</td>
                             <td>{{item.DESCRIPCION_PRODUCTO}}</td>
-                            <td>{{item.CANTIDAD_PRODUCTO}}</td>
-                            <td>{{item.PRECIO_PRODUCTO}}</td>
+                            <td>{{item.CANTIDAD_INGRESO}}</td>
+                            <td>{{item.FECHA_INGRESO | date:'yyyy-MM-dd'}}</td>
+                            <td>{{item.CANTIDAD_SALIDA}}</td>
+                            <td>{{item.FECHA_SALIDA | date:'yyyy-MM-dd'}} </td>
+                            <td>{{item.STOCK_INVENTARIO}}</td>
+                            <td>{{item.Precio}}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button class="btn btn-warning" title="Editar" (click)="open(mymodal, item)">

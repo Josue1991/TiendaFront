@@ -11,7 +11,6 @@ export class MenuComponent {
   constructor(private jwtHelper: JwtHelperService, private router: Router) {
   }
   isUserAuthenticated() {
-    debugger;
     const token = localStorage.getItem("tokens");
     const timeExpire = this.jwtHelper.isTokenExpired(token);
     if (token && !timeExpire) {

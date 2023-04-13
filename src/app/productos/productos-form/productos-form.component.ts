@@ -3,6 +3,8 @@ import { Productos } from 'src/app/models/productos';
 import { ProductosService } from '../service/productos.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/alerta/notification.service';
+import { ProductoInventario } from 'src/app/models/productoInventario';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-productos-form',
@@ -11,12 +13,12 @@ import { NotificationService } from 'src/app/alerta/notification.service';
 
 export class ProductosFormComponent implements OnInit {
 
-  productos: Productos[] = [];
+  productos: ProductoInventario[] = [];
   closeResult: string = '';
-  productoSeleccionado?: Productos = new Productos;
+  productoSeleccionado?: ProductoInventario = new ProductoInventario;
   filtroProducto: Productos = new Productos;
 
-  constructor(private productosService: ProductosService, private modalService: NgbModal,public notificationService: NotificationService) {
+  constructor(private productosService: ProductosService, private modalService: NgbModal, public notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -26,25 +28,25 @@ export class ProductosFormComponent implements OnInit {
     this.productos = [];
     this.productosService.listaProductos().subscribe(res => {
       if (res.length > 0) {
-        this.notificationService.showInfo("Si se encontraron Resultados", "Consulta Finalizada");
+        this.notificationService.showInfo("Se han encontraron: " + res.length + " Resultados", "Consulta Finalizada");
         res.forEach(item => {
-          if (this.filtroProducto.ID_PRODUCTO != undefined && this.filtroProducto.DESCRIPCION_PRODUCTO == undefined && item.ID_PRODUCTO == this.filtroProducto.ID_PRODUCTO) {
+          if (this.filtroProducto.ID_PRODUCTO != undefined &&
+            this.filtroProducto.DESCRIPCION_PRODUCTO == undefined &&
+            item.ID_PRODUCTO == this.filtroProducto.ID_PRODUCTO) {
             this.productos.push(item);
           }
-          if (this.filtroProducto.DESCRIPCION_PRODUCTO != undefined && this.filtroProducto.ID_PRODUCTO == undefined && item.DESCRIPCION_PRODUCTO == this.filtroProducto.DESCRIPCION_PRODUCTO) {
+          if (this.filtroProducto.DESCRIPCION_PRODUCTO != undefined &&
+            this.filtroProducto.ID_PRODUCTO == undefined &&
+            item.DESCRIPCION_PRODUCTO?.localeCompare(this.filtroProducto.DESCRIPCION_PRODUCTO)) {
             this.productos.push(item);
           }
-          if (this.filtroProducto.ID_PRODUCTO != undefined && this.filtroProducto.DESCRIPCION_PRODUCTO != undefined) {
-            if (item.ID_PRODUCTO == this.filtroProducto.ID_PRODUCTO && item.DESCRIPCION_PRODUCTO == this.filtroProducto.DESCRIPCION_PRODUCTO) {
-              this.productos.push(item);
-            }
-          }
-          else {
+          if (this.filtroProducto.ID_PRODUCTO == undefined &&
+            this.filtroProducto.DESCRIPCION_PRODUCTO == undefined) {
             this.productos.push(item);
           }
         });
       }
-      else{
+      else {
         this.notificationService.showError("No se han encotrado datos!!", "Consulta Finalizada");
       }
     });

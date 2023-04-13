@@ -4,6 +4,7 @@ import { Clientes } from '../../models/clientes';
 import { NotificationService } from 'src/app/alerta/notification.service';
 import { ProductosService } from '../service/productos.service';
 import { Productos } from 'src/app/models/productos';
+import { ProductoInventario } from 'src/app/models/productoInventario';
 
 @Component({
   selector: 'app-editar-productos',
@@ -11,12 +12,15 @@ import { Productos } from 'src/app/models/productos';
 })
 export class EditarProductosComponent implements OnInit {
 
-  productoActualizado = new Productos();
+  productoActualizado = new ProductoInventario();
   filtroProducto: Productos = new Productos;
   productos: Productos[] = [];
 
   @Input() productoSeleccionado: any;
-  constructor(private productosService: ProductosService, private modalService: NgbModal,public notificationService: NotificationService) {
+  constructor(private productosService: ProductosService, 
+    private modalService: NgbModal, 
+    public notificationService: NotificationService,
+    private productoService: ProductosService) {
   }
 
 
@@ -28,25 +32,25 @@ export class EditarProductosComponent implements OnInit {
     this.productos = [];
     this.productosService.listaProductos().subscribe(res => {
       if (res.length > 0) {
-        this.notificationService.showInfo("Si se encontraron Resultados", "Consulta Finalizada");
+        this.notificationService.showInfo("Se han encontraron: " + res.length + " Resultados", "Consulta Finalizada");
         res.forEach(item => {
-          if (this.filtroProducto.ID_PRODUCTO != undefined && this.filtroProducto.DESCRIPCION_PRODUCTO == undefined && item.ID_PRODUCTO == this.filtroProducto.ID_PRODUCTO) {
+          if (this.filtroProducto.ID_PRODUCTO != undefined &&
+            this.filtroProducto.DESCRIPCION_PRODUCTO == undefined &&
+            item.ID_PRODUCTO == this.filtroProducto.ID_PRODUCTO) {
             this.productos.push(item);
           }
-          if (this.filtroProducto.DESCRIPCION_PRODUCTO != undefined && this.filtroProducto.ID_PRODUCTO == undefined && item.DESCRIPCION_PRODUCTO == this.filtroProducto.DESCRIPCION_PRODUCTO) {
+          if (this.filtroProducto.DESCRIPCION_PRODUCTO != undefined &&
+            this.filtroProducto.ID_PRODUCTO == undefined &&
+            item.DESCRIPCION_PRODUCTO?.localeCompare(this.filtroProducto.DESCRIPCION_PRODUCTO)) {
             this.productos.push(item);
           }
-          if (this.filtroProducto.ID_PRODUCTO != undefined && this.filtroProducto.DESCRIPCION_PRODUCTO != undefined) {
-            if (item.ID_PRODUCTO == this.filtroProducto.ID_PRODUCTO && item.DESCRIPCION_PRODUCTO == this.filtroProducto.DESCRIPCION_PRODUCTO) {
-              this.productos.push(item);
-            }
-          }
-          else {
+          if (this.filtroProducto.ID_PRODUCTO == undefined &&
+            this.filtroProducto.DESCRIPCION_PRODUCTO == undefined) {
             this.productos.push(item);
           }
         });
       }
-      else{
+      else {
         this.notificationService.showError("No se han encotrado datos!!", "Consulta Finalizada");
       }
     });
@@ -54,11 +58,17 @@ export class EditarProductosComponent implements OnInit {
 
 
   actualizar() {
-    this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Cliente Actualizado")
+    this.productoService.editarProducto(this.productoActualizado).subscribe((data) => {
+      if (data) {
+        console.log(data)
+        this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Producto Actualizado");
+        this.filtrar();
+      }
+    });
     this.Cerrar();
-    
+
   }
-  Cerrar(){
+  Cerrar() {
     this.modalService.dismissAll('Save click');
     this.filtrar();
   }

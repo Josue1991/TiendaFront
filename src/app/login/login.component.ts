@@ -90,7 +90,6 @@ export class LoginComponent implements OnInit {
   }
 
   isUserAuthenticated() {
-    debugger;
     const token = localStorage.getItem("tokens");
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       this.router.navigate(["/"]);

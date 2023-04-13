@@ -1,45 +1,61 @@
 <form>
     <div class="container">
         <div class="row">
-            <div class="col-3">
+            <div class="col-6">
                 <label>Descripcion: </label>
             </div>
             <div class="col-6">
-                <input [(ngModel)]="productoNuevo.DESCRIPCION_PRODUCTO" name="DESCRIPCION_PRODUCTO" #DESCRIPCION_PRODUCTO="ngModel" required>
-            </div>
-            <div class="col-3">
+                <input [(ngModel)]="productoNuevo.DESCRIPCION_PRODUCTO" name="DESCRIPCION_PRODUCTO"
+                    #DESCRIPCION_PRODUCTO="ngModel" required>
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
-                <label>Cantidad: </label>
+            <div class="col-6">
+                <label>Cantidad de Ingreso: </label>
             </div>
             <div class="col-6">
-                <input [(ngModel)]="productoNuevo.CANTIDAD_PRODUCTO" name="CANTIDAD_PRODUCTO" #CANTIDAD_PRODUCTO="ngModel" required>                
-            </div>
-            <div class="col-3">
+                <input [(ngModel)]="productoNuevo.CANTIDAD_INGRESO" name="CANTIDAD_INGRESO" #CANTIDAD_PRODUCTO="ngModel"
+                    required>
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-6">
+                <label>Cantidad de Salida: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="productoNuevo.CANTIDAD_SALIDA" name="CANTIDAD_SALIDA" #CANTIDAD_SALIDA="ngModel"
+                    required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Unidad: </label>
+            </div>
+            <div class="col-6">
+                <select class="form-select" name="unidadSeleccionada" [(ngModel)]="unidadSeleccionada" >
+                    <option [ngValue]="0" >Seleccionar Unidad</option>
+                    <option *ngFor="let item of unidades" [ngValue]="item.ID_UNIDAD">{{item.ABREVIATURA_UNIDAD}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
                 <label>Precio: </label>
             </div>
             <div class="col-6">
-                <input [(ngModel)]="productoNuevo.PRECIO_PRODUCTO" name="PRECIO_PRODUCTO" #PRECIO_PRODUCTO="ngModel" required>                
+                <input [(ngModel)]="productoNuevo.Precio" name="Precio" #Precio="ngModel" required>
             </div>
-            <div class="col-3">
-            </div>
-        </div>        
+        </div>
         <div class="row">
             <div class="col-3">
             </div>
             <div class="col-6">
                 <br>
                 <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-success" (click)="crear()">
-                    <i class="fa fa-cloud-upload"></i>Guardar</button>
-                <button type="button" class="btn btn-outline-danger" (click)="Cerrar()">
-                    <i class="fa fa-power-off"></i> Cancelar</button>
+                    <button type="button" class="btn btn-outline-success" (click)="crear()">
+                        <i class="fa fa-cloud-upload"></i>Guardar</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="Cerrar()">
+                        <i class="fa fa-power-off"></i> Cancelar</button>
                 </div>
             </div>
             <div class="col-3">

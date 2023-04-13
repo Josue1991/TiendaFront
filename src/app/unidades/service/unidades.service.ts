@@ -15,6 +15,9 @@ export class UnidadesService {
     return this.http.get<Unidades[]>(this.url+"/listarUnidades");
   }
   crearUnidad(elemento: Unidades): Observable<any>{
-    return this.http.post(this.url+"/insertarUnidad", elemento);
+    return this.http.post(this.url+"/InsertarUnidad", elemento);
+  }
+  editarUnidad(elemento: Unidades): Observable<any>{
+    return this.http.post(this.url+"/EditarUnidad", elemento);
   }
 }

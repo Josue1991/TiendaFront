@@ -15,7 +15,7 @@ export class EditarUnidadesComponent implements OnInit {
   unidades: Unidades[] = [];
 
   @Input() unidadSeleccionado: any;
-  constructor(private unidadesService: UnidadesService, private modalService: NgbModal,public notificationService: NotificationService) {
+  constructor(private unidadesService: UnidadesService, private modalService: NgbModal, public notificationService: NotificationService) {
   }
 
 
@@ -29,41 +29,39 @@ export class EditarUnidadesComponent implements OnInit {
       if (res.length > 0) {
         this.notificationService.showInfo("Si se encontraron Resultados", "Consulta Finalizada");
         res.forEach(item => {
-          if (this.filtroUnidades.ID_UNIDAD != undefined && 
-            this.filtroUnidades.DESCRIPCION_UNIDAD == undefined && 
+          debugger
+          if (this.filtroUnidades.ID_UNIDAD != undefined &&
+            this.filtroUnidades.DESCRIPCION_UNIDAD == undefined &&
             item.ID_UNIDAD == this.filtroUnidades.ID_UNIDAD) {
             this.unidades.push(item);
           }
-          if (this.filtroUnidades.DESCRIPCION_UNIDAD != undefined && 
-            this.filtroUnidades.ID_UNIDAD == undefined && 
-            item.DESCRIPCION_UNIDAD == this.filtroUnidades.DESCRIPCION_UNIDAD) {
+          if (this.filtroUnidades.ID_UNIDAD == undefined &&
+            this.filtroUnidades.DESCRIPCION_UNIDAD != undefined &&
+            item.DESCRIPCION_UNIDAD?.localeCompare(this.filtroUnidades.DESCRIPCION_UNIDAD)) {
             this.unidades.push(item);
           }
-          if (this.filtroUnidades.ID_UNIDAD != undefined && 
-            this.filtroUnidades.DESCRIPCION_UNIDAD != undefined) {
-            if (item.ID_UNIDAD == this.filtroUnidades.ID_UNIDAD && 
-              item.DESCRIPCION_UNIDAD == this.filtroUnidades.DESCRIPCION_UNIDAD) {
-              this.unidades.push(item);
-            }
-          }
-          else {
+          if (this.filtroUnidades.ID_UNIDAD == undefined &&
+            this.filtroUnidades.DESCRIPCION_UNIDAD == undefined ) {
             this.unidades.push(item);
           }
         });
       }
-      else{
+      else {
         this.notificationService.showError("No se han encotrado datos!!", "Consulta Finalizada");
       }
     });
   }
 
-
   actualizar() {
-    this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Cliente Actualizado")
+    this.unidadesService.editarUnidad(this.unidadSeleccionado).subscribe((data) => {
+      if (data) {
+        console.log(data)
+        this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Unidad Actualizada");
+      }
+    });
     this.Cerrar();
-    
   }
-  Cerrar(){
+  Cerrar() {
     this.modalService.dismissAll('Save click');
     this.filtrar();
   }

@@ -18,15 +18,14 @@ export class CrearUnidadesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  crear(){
-    debugger;    
+  
+  crear(){ 
     this.unidadService.crearUnidad(this.unidadNuevo).subscribe((data) => {
       if (data) {
         console.log(data)
+        this.notificationService.showSuccess("Datos Ingresados Correctamente!!", "Unidad Agregada");
       }
-    });
-
-    this.notificationService.showSuccess("Datos Actualizados Correctamente!!", "Producto Actualizado");
+    });    
     this.modalService.dismissAll('Save click');
   }
   Cerrar(){
