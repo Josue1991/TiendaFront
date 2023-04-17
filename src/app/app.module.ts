@@ -26,6 +26,11 @@ import { BorrarUnidadesComponent } from './unidades/borrar-unidades/borrarUnidad
 import { EditarUnidadesComponent } from './unidades/editar-unidades/editar-unidades.component';
 import { CrearUnidadesComponent } from './unidades/crear-unidades/crear-unidades.component';
 import { UnidadesModule } from './unidades/unidades.module';
+import { EstadosFormComponent } from './estados/estados-form/estados-form.component';
+import { EstadosModule } from './estados/estados.module';
+import { CrearEstadosComponent } from './estados/crear-estados/crear-estados.component';
+import { EditarEstadosComponent } from './estados/editar-estados/editar-estados.component';
+import { BorrarEstadosComponent } from './estados/borrar-estados/borrar-estados.component';
 
 
 @NgModule({
@@ -45,6 +50,10 @@ import { UnidadesModule } from './unidades/unidades.module';
     CrearUnidadesComponent,
     EditarUnidadesComponent,
     BorrarUnidadesComponent,
+    EstadosFormComponent,
+    CrearEstadosComponent,
+    EditarEstadosComponent,
+    BorrarEstadosComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +65,7 @@ import { UnidadesModule } from './unidades/unidades.module';
     LoginModule,
     BrowserAnimationsModule,
     UnidadesModule,  
+    EstadosModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
