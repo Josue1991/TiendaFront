@@ -14,7 +14,7 @@ export class EmpleadoFormComponent implements OnInit {
   empleadoseleccionado?: Empleado = new Empleado;
   filtroEmpleado: Empleado = new Empleado;
 
-  constructor(private empleadoservice: EmpleadoService, private modalService: NgbModal,public notificationService: NotificationService) {
+  constructor(private empleadoservice: EmpleadoService, private modalService: NgbModal, public notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
@@ -26,15 +26,17 @@ export class EmpleadoFormComponent implements OnInit {
       if (res.length > 0) {
         this.notificationService.showInfo("Si se encontraron Resultados", "Consulta Finalizada");
         res.forEach(item => {
-          if (this.filtroEmpleado.DNI_EMPLEADO != undefined && this.filtroEmpleado.NOMBRE_EMPLEADO == undefined && item.DNI_EMPLEADO == this.filtroEmpleado.DNI_EMPLEADO) {
-            this.empleados.push(item);
-          }
-          if (this.filtroEmpleado.NOMBRE_EMPLEADO != undefined && this.filtroEmpleado.DNI_EMPLEADO == undefined && item.NOMBRE_EMPLEADO == this.filtroEmpleado.NOMBRE_EMPLEADO) {
-            this.empleados.push(item);
-          }
-          if (this.filtroEmpleado.DNI_EMPLEADO != undefined && this.filtroEmpleado.NOMBRE_EMPLEADO != undefined) {
-            if (item.DNI_EMPLEADO == this.filtroEmpleado.DNI_EMPLEADO && item.NOMBRE_EMPLEADO == this.filtroEmpleado.NOMBRE_EMPLEADO) {
+          if (this.filtroEmpleado.DNI_EMPLEADO != undefined || this.filtroEmpleado.NOMBRE_EMPLEADO != undefined) {
+            if (this.filtroEmpleado.DNI_EMPLEADO != undefined && this.filtroEmpleado.NOMBRE_EMPLEADO == undefined && item.DNI_EMPLEADO == this.filtroEmpleado.DNI_EMPLEADO) {
               this.empleados.push(item);
+            }
+            if (this.filtroEmpleado.NOMBRE_EMPLEADO != undefined && this.filtroEmpleado.DNI_EMPLEADO == undefined && item.NOMBRE_EMPLEADO == this.filtroEmpleado.NOMBRE_EMPLEADO) {
+              this.empleados.push(item);
+            }
+            if (this.filtroEmpleado.DNI_EMPLEADO != undefined && this.filtroEmpleado.NOMBRE_EMPLEADO != undefined) {
+              if (item.DNI_EMPLEADO == this.filtroEmpleado.DNI_EMPLEADO && item.NOMBRE_EMPLEADO == this.filtroEmpleado.NOMBRE_EMPLEADO) {
+                this.empleados.push(item);
+              }
             }
           }
           else {
@@ -42,7 +44,7 @@ export class EmpleadoFormComponent implements OnInit {
           }
         });
       }
-      else{
+      else {
         this.notificationService.showError("No se han encotrado datos!!", "Consulta Finalizada");
       }
     });
