@@ -21,4 +21,7 @@ export class ProductosService {
   editarProducto(producto: Productos): Observable<any>{
     return this.http.post(this.url+"/editarProducto", producto);
   }
+  listaTodo(): Observable<any[]>{
+    return this.http.get<any[]>(this.url+"/TodosProductos");
+  }
 }

@@ -1,0 +1,117 @@
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
+                <h1>Administrar Empleados</h1>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Filtros de Busqueda</label>
+            </div>
+            <div class="col-6">
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-4">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Cedula: </span>
+                    <input type="text" class="form-control" [(ngModel)]="filtroEmpleado.DNI_EMPLEADO" name="CEDULA"
+                        #CEDULA="ngModel" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-4">
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nombre: </span>
+                    <input type="text" class="form-control" [(ngModel)]="filtroEmpleado.NOMBRE_EMPLEADO" name="EMAIL"
+                        #EMAIL="ngModel" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" (click)="filtrar()"><i class="fa fa-search"></i> Buscar</button>
+                    <button class="btn btn-success" (click)="openCrear(mymodalCrear)"><i class="fa fa-plus"></i>
+                        Nuevo</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Archivos</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let empleado of empleados">
+                        <tr>
+                            <td>{{empleado.ID_EMPLEADO}}</td>
+                            <td>{{empleado.NOMBRE_EMPLEADO}}</td>
+                            <td>{{empleado.APELLIDO_EMPLEADO}}</td>
+                            <td>{{empleado.DNI_EMPLEADO}}</td>
+                            <td>{{empleado.ARCHIVOS}}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                   <!-- <button class="btn btn-warning" title="Editar" (click)="open(mymodal, cliente)">
+                                        <i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-danger" title="Borrar" (click)="open(eliminarModel, cliente)"><i
+                                            class="fa fa-trash"></i></button>-->
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<ng-template #mymodal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Editar Cliente</h4>
+    </div>
+    <div class="modal-body">
+<!--        <app-editar [clienteSeleccionado]="clienteSeleccionado"></app-editar>-->
+    </div>
+  </ng-template>
+
+
+<ng-template #mymodalCrear>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Crear Cliente</h4>
+    </div>
+    <div class="modal-body">
+        <!--<app-crear></app-crear>-->
+    </div>
+</ng-template>
+
+<ng-template #eliminarModel>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Eliminar Cliente</h4>
+    </div>
+    <div class="modal-body">
+       <!--<app-borrar [clienteSeleccionado]="clienteSeleccionado"></app-borrar>-->
+    </div>
+  </ng-template>

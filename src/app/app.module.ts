@@ -31,6 +31,18 @@ import { EstadosModule } from './estados/estados.module';
 import { CrearEstadosComponent } from './estados/crear-estados/crear-estados.component';
 import { EditarEstadosComponent } from './estados/editar-estados/editar-estados.component';
 import { BorrarEstadosComponent } from './estados/borrar-estados/borrar-estados.component';
+import { FacturacionComponent } from './facturacion/facturacion.component';
+import { ServiciosFormComponent } from './servicios/servicios-form/servicios-form.component';
+import { DetalleServiciosComponent } from './detalle-servicios/detalleServicio-form/detalle-servicios.component';
+import { CrearServicioComponent } from './servicios/crear-servicios/crear-servicio.component';
+import { BorrarServicioComponent } from './servicios/borrar-servicios/borrar-servicio.component';
+import { EditarServicioComponent } from './servicios/editar-servicios/editar-servicios.component';
+import { CrearDetalleServicioComponent } from './detalle-servicios/crear-detalleServicio/crear-detalleServicio.component';
+import { EditarDetalleServicioComponent } from './detalle-servicios/editar-detalleServicio/editar-detalleServicio.component';
+import { ServiciosModule } from './servicios/servicios.module';
+import { DetalleServiciosModule } from './detalle-servicios/detalle-servicios.module';
+import { EmpleadoModule } from './empleado/empleado.module';
+import { EmpleadoFormComponent } from './empleado/empleado-form/empleado-form.component';
 
 
 @NgModule({
@@ -53,7 +65,16 @@ import { BorrarEstadosComponent } from './estados/borrar-estados/borrar-estados.
     EstadosFormComponent,
     CrearEstadosComponent,
     EditarEstadosComponent,
-    BorrarEstadosComponent
+    BorrarEstadosComponent,
+    FacturacionComponent,
+    ServiciosFormComponent,
+    CrearServicioComponent,
+    EditarServicioComponent,
+    BorrarServicioComponent,
+    DetalleServiciosComponent,
+    CrearDetalleServicioComponent, 
+    EditarDetalleServicioComponent, 
+    EmpleadoFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +87,9 @@ import { BorrarEstadosComponent } from './estados/borrar-estados/borrar-estados.
     BrowserAnimationsModule,
     UnidadesModule,  
     EstadosModule,
+    ServiciosModule,
+    DetalleServiciosModule,
+    EmpleadoModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

@@ -8,6 +8,7 @@ export class Usuarios {
         public CONTRASENA?: string,
         public RECONTRASENA?: string,
         public EMAIL?: string,
-        public EMPLEADO: Empleado = new Empleado
+        public EMPLEADO: Empleado = new Empleado,
+        
     ) { }
 }

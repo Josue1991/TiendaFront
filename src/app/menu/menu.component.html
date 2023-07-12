@@ -26,6 +26,11 @@
               <span>Estados</span>
             </a>
           </li>
+          <li *ngIf="isUserAuthenticated() && perfil != 'Administrador'" class="nav-item">
+            <a routerLinkActive="active" routerLink="/servicio/ver" class="nav-link">
+              <span>Servicios</span>
+            </a>
+          </li>
         </ul>
         <form class="d-flex" role="search">
           <a *ngIf="!isUserAuthenticated()" class="btn btn-outline-success" routerLink="/login"><span>Login</span></a>

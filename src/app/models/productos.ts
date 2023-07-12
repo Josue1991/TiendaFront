@@ -4,5 +4,9 @@ export class Productos {
         public DESCRIPCION_PRODUCTO?: string,
         public CANTIDAD_PRODUCTO?: number,
         public PRECIO_PRODUCTO?: number,
-        public ESTADO_PRODUCTO?: number) { }
+        public ESTADO_PRODUCTO?: number,
+
+        //DTO
+        public seleccionado?: number
+    ) { }
 }

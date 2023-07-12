@@ -1,0 +1,81 @@
+<form>
+    <h5 class="modal-title" id="modal-basic-title">Detalles Servicio</h5>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <label>Producto: </label>
+            </div>
+            <div class="col-7">
+                <select class="form-select" name="productoSeleccionada" [(ngModel)]="productoSeleccionada"
+                    [disabled]="(productos.length) > 0 ? false : true">
+                    <option [ngValue]="0">Seleccionar Producto</option>
+                    <option *ngFor="let item of productos" [ngValue]="item.ID_PRODUCTO">{{item.ID_PRODUCTO}} - {{item.DESCRIPCION_PRODUCTO}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-3">
+                <label>Cantidad: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="detalleServicioNuevo.CANTIDAD_DETALLE" name="CANTIDAD_DETALLE"
+                    #CANTIDAD_DETALLE="ngModel" [disabled]="(productos.length) > 0 ? false : true" required>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <br>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-success" (click)="crear()">
+                        <i class="fa fa-cloud-upload"></i>Agregar</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th> Quitar</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of detalles">
+                        <tr>
+                            <td>{{item.ID_PRODUCTO}}</td>
+                            <td>{{item.CANTIDAD_DETALLE}}</td>
+                            <td><button type="button" class="btn btn-outline-info" (click)="Quitar(item)">
+                                    <i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <br>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-info" (click)="guardar()"
+                        [disabled]="servicioCabecera.DESCRIPCION_SERVICIO != undefined && servicioCabecera.PRECIO_SERVICIO !=undefined ? false : true">
+                        <i class="fa fa-power-off"></i> Guardar Servicio</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+    </div>
+</form>

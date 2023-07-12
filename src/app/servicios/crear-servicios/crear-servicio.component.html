@@ -1,0 +1,45 @@
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <label>Descripcion: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="servicioNuevo.DESCRIPCION_SERVICIO" name="DESCRIPCION_SERVICIO"
+                    #DESCRIPCION_SERVICIO="ngModel" [disabled]="(habilitarDetalles)?true:false" required>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Precio: </label>
+            </div>
+            <div class="col-6">
+                <input [(ngModel)]="servicioNuevo.PRECIO_SERVICIO" name="PRECIO_SERVICIO" #PRECIO_SERVICIO="ngModel"
+                    required [disabled]="(habilitarDetalles)?true:false">
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6"
+                *ngIf="servicioNuevo.DESCRIPCION_SERVICIO != '' && servicioNuevo.PRECIO_SERVICIO != undefined">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button class="btn btn-warning" title="Editar" (click)="open()">
+                        <i class="fa fa-cart-plus"></i> Agregar Detalles</button>
+                </div>
+            </div>
+            <div class="col-3">
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row" *ngIf="habilitarDetalles">
+            <app-crear-detalle-servicio [servicioSeleccionado]="servicioSeleccionado"></app-crear-detalle-servicio>
+        </div>
+    </div>
+
+</form>
